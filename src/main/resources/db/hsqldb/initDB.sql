@@ -43,6 +43,18 @@ CREATE TABLE owners (
 );
 CREATE INDEX owners_last_name ON owners (last_name);
 
+
+CREATE TABLE users (
+  id         INTEGER IDENTITY PRIMARY KEY,
+  first_name VARCHAR(30),
+  last_name  VARCHAR(30),
+  address    VARCHAR(255),
+  city       VARCHAR(80),
+  telephone  VARCHAR(20)
+);
+
+CREATE INDEX users_last_name ON users (last_name);
+
 CREATE TABLE pets (
   id         INTEGER IDENTITY PRIMARY KEY,
   name       VARCHAR(30),
