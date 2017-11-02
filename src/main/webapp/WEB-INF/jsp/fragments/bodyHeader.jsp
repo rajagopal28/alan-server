@@ -26,6 +26,10 @@
                 Home</a></li>
             <li style="width: 130px;"><a href="<spring:url value="/owners/find.html" htmlEscape="true" />"><i
                     class="icon-search"></i> Find owners</a></li>
+            <li style="width: 130px;"><a href="<spring:url value="/users/find.html" htmlEscape="true" />"><i
+                    class="icon-search"></i> Find users</a></li>
+            <li style="width: 130px;"><a href="<spring:url value="/users/all.html" htmlEscape="true" />"><i
+                    class="icon-search"></i> Show All users</a></li>
             <li style="width: 140px;"><a href="<spring:url value="/vets.html" htmlEscape="true" />"><i
                     class="icon-th-list"></i> Veterinarians</a></li>
             <li style="width: 90px;"><a href="<spring:url value="/oups.html" htmlEscape="true" />"
