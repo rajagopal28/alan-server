@@ -61,7 +61,7 @@ public interface UserRepository {
      */
     void save(User user) throws DataAccessException;
     
-    Collection<User> findUsers() throws DataAccessException;
+    Collection<User> findAll() throws DataAccessException;
 
 
 

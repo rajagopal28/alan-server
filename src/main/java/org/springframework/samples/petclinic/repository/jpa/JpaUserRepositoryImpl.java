@@ -59,7 +59,7 @@ public class JpaUserRepositoryImpl implements UserRepository {
     }
     
     @SuppressWarnings("unchecked")
-    public Collection<User> findUsers() {
+    public Collection<User> findAll() {
         // using 'join fetch' because a single query should load both users and pets
         // using 'left join fetch' because it might happen that an user does not have pets yet
         Query query = this.em.createQuery("SELECT DISTINCT user FROM User user");
@@ -74,7 +74,6 @@ public class JpaUserRepositoryImpl implements UserRepository {
         query.setParameter("id", id);
         return (User) query.getSingleResult();
     }
-
 
     @Override
     public void save(User user) {

@@ -130,7 +130,7 @@ public class ClinicServiceImpl implements ClinicService {
     @Override
     @Transactional(readOnly = true)
     public Collection<User> findUsers() throws DataAccessException {
-        return userRepository.findUsers();
+        return userRepository.findAll();
     }
     
 

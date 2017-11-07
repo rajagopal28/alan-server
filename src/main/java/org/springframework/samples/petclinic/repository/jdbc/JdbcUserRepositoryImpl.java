@@ -122,8 +122,7 @@ public class JdbcUserRepositoryImpl implements UserRepository {
     }
 
    
-    @Override
-    public Collection<User> findUsers() throws DataAccessException {
+    public Collection<User> findAll() throws DataAccessException {
         Map<String, Object> params = new HashMap<String, Object>();
         List<User> users = this.namedParameterJdbcTemplate.query(
                 "SELECT id, first_name, last_name, address, city, telephone FROM users",
