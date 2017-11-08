@@ -59,6 +59,7 @@
                 <entry key="html" value="text/html" />
                 <entry key="xml" value="application/xml" />
                 <entry key="atom" value="application/atom+xml" />
+                <entry key="json" value="application/json" />
             </map>
         </property>
     </bean>
@@ -71,9 +72,15 @@
         <property name="marshaller" ref="marshaller"/>
     </bean>
 
+    <bean id="users/userList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
+        <property name="marshaller" ref="umarshaller"/>
     <oxm:jaxb2-marshaller id="marshaller">
         <!-- Object-XML mapping declared using annotations inside 'Vets' -->
         <oxm:class-to-be-bound name="org.springframework.samples.petclinic.model.Vets"/>
+    </oxm:jaxb2-marshaller>
+     <oxm:jaxb2-marshaller id="umarshaller">
+        <!-- Object-XML mapping declared using annotations inside 'Vets' -->
+        <oxm:class-to-be-bound name="org.springframework.samples.petclinic.model.Users"/>
     </oxm:jaxb2-marshaller>
 
 </beans>
