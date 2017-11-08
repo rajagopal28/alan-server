@@ -67,4 +67,13 @@ public class VisitsViewTests {
         actions.andExpect(xpath("/vets/vetList[id=1]/firstName").string(containsString("James")));
 
     }
+    @Test
+    public void getUsersXml() throws Exception {
+        ResultActions actions = this.mockMvc.perform(get("/users1.xml").accept(MediaType.APPLICATION_XML));
+        actions.andDo(print()); // action is logged into the console
+        actions.andExpect(status().isOk());
+        actions.andExpect(content().contentType("application/xml"));
+        actions.andExpect(xpath("/users/userList[id=1]/firstName").string(containsString("Rajagopal")));
+
+    }
 }

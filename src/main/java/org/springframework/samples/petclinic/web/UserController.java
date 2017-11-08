@@ -100,7 +100,7 @@ public class UserController {
         if (results.size() > 1) {
             // multiple users found
             model.put("selections", results);
-            return "users/usersList";
+            return "users/userList";
         } else {
             // 1 user found
             user = results.iterator().next();
@@ -144,7 +144,7 @@ public class UserController {
     	Collection<User> results = this.clinicService.findUsers();
         // multiple users found
         model.put("selections", results);
-        return "users/usersList";
+        return "users/userList";
     }
 
 }

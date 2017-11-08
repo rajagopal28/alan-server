@@ -18,6 +18,7 @@ package org.springframework.samples.petclinic.web;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Users;
 import org.springframework.samples.petclinic.model.Vets;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
@@ -48,6 +49,16 @@ public class VetController {
         vets.getVetList().addAll(this.clinicService.findVets());
         model.put("vets", vets);
         return "vets/vetList";
+    }
+    
+    @RequestMapping("/users1")
+    public String showUserList(Map<String, Object> model) {
+        // Here we are returning an object of type 'Vets' rather than a collection of Vet objects 
+        // so it is simpler for Object-Xml mapping
+        Users users = new Users();
+        users.getUserList().addAll(this.clinicService.findUsers());
+        model.put("users", users);
+        return "users/userList";
     }
 
 
