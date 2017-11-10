@@ -51,7 +51,7 @@ public class VetController {
         return "vets/vetList";
     }
     
-    @RequestMapping("/users1")
+    @RequestMapping("/usersFeed")
     public String showUserList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet objects 
         // so it is simpler for Object-Xml mapping
