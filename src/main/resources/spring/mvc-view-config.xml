@@ -67,11 +67,17 @@
     <!-- Renders an Atom feed of the visits. Used by the BeanNameViewResolver  -->
     <bean id="vets/vetList.atom" class="org.springframework.samples.petclinic.web.VetsAtomView"/>
 
+    <!-- Renders JSON view -->
+    <bean id="users/userList.json" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+    </bean>
     <!-- Renders an XML view. Used by the BeanNameViewResolver  -->
-    <bean id="vets/vetList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
+     <bean id="vets/vetList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
         <property name="marshaller" ref="marshaller"/>
     </bean>
 
+    <!-- Renders an XML view. Used by the BeanNameViewResolver
+    org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
+    -->
     <bean id="users/userList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
         <property name="marshaller" ref="umarshaller"/>
     </bean>
