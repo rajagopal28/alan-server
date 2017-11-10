@@ -137,6 +137,7 @@
 
 		<mysql.version>5.1.22</mysql.version>
 		<jackson-lib.version>2.9.2</jackson-lib.version>
+		<jsonassert.version>1.5.0</jsonassert.version>
 
 		<maven.compiler.version>3.0</maven.compiler.version>
 		<maven.assembly.version>2.4</maven.assembly.version>
@@ -230,6 +231,12 @@
 			   <groupId>com.fasterxml.jackson.core</groupId>
 			   <artifactId>jackson-databind</artifactId>
 			   <version>${jackson-lib.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.skyscreamer</groupId>
+			    <artifactId>jsonassert</artifactId>
+			    <version>${jsonassert.version}</version>
+				<scope>test</scope>
 			</dependency>
 			<!-- SPRING, SPRING, SPRINGITY SPRING -->
 			<dependency>
@@ -492,6 +499,11 @@
 		<dependency>
 		   <groupId>com.fasterxml.jackson.core</groupId>
 		   <artifactId>jackson-databind</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.skyscreamer</groupId>
+		    <artifactId>jsonassert</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<!-- SPRING, SPRING, SPRINGITY SPRING -->
