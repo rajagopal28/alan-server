@@ -69,7 +69,7 @@ public class VisitsViewTests {
     }
     @Test
     public void getUsersXml() throws Exception {
-        ResultActions actions = this.mockMvc.perform(get("/users1.xml").accept(MediaType.APPLICATION_XML));
+        ResultActions actions = this.mockMvc.perform(get("/usersFeed.xml").accept(MediaType.APPLICATION_XML));
         actions.andDo(print()); // action is logged into the console
         actions.andExpect(status().isOk());
         actions.andExpect(content().contentType("application/xml"));
