@@ -15,17 +15,20 @@
  */
 package org.springframework.samples.petclinic.web;
 
-import com.rometools.rome.feed.atom.Entry;
-import com.rometools.rome.feed.atom.Feed;
-import com.rometools.rome.feed.atom.Content;
-import org.springframework.samples.petclinic.model.Vet;
-import org.springframework.samples.petclinic.model.Vets;
-import org.springframework.web.servlet.view.feed.AbstractAtomFeedView;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.samples.petclinic.model.User;
+import org.springframework.samples.petclinic.model.Users;
+import org.springframework.web.servlet.view.feed.AbstractAtomFeedView;
+
+import com.rometools.rome.feed.atom.Content;
+import com.rometools.rome.feed.atom.Entry;
+import com.rometools.rome.feed.atom.Feed;
 
 /**
  * A view creating a Atom representation from a list of Visit objects.
@@ -33,12 +36,12 @@ import java.util.Map;
  * @author Alef Arendsen
  * @author Arjen Poutsma
  */
-public class VetsAtomView extends AbstractAtomFeedView {
+public class UsersAtomView extends AbstractAtomFeedView {
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Feed feed,
         HttpServletRequest request) {
         feed.setId("tag:springsource.org");
-        feed.setTitle("Veterinarians");
+        feed.setTitle("Users");
         // feed.setUpdated(date);
     }
 
@@ -46,19 +49,19 @@ public class VetsAtomView extends AbstractAtomFeedView {
     protected List<Entry> buildFeedEntries(Map<String, Object> model,
         HttpServletRequest request, HttpServletResponse response)
         throws Exception {
-        Vets vets = (Vets) model.get("vets");
-        List<Vet> vetList = vets.getVetList();
-        List<Entry> entries = new ArrayList<Entry>(vetList.size());
-        for (Vet vet : vetList) {
+        Users users = (Users) model.get("users");
+        List<User> userList = users.getUserList();
+        List<Entry> entries = new ArrayList<Entry>(userList.size());
+        for (User user : userList) {
             Entry entry = new Entry();
             // see
             // http://diveintomark.org/archives/2004/05/28/howto-atom-id#other
-            entry.setId(String.format("tag:springsource.org,%s", vet.getId()));
-            entry.setTitle(String.format("Vet: %s %s", vet.getFirstName(),
-                vet.getLastName()));
+            entry.setId(String.format("tag:springsource.org,%s", user.getId()));
+            entry.setTitle(String.format("Vet: %s %s", user.getFirstName(),
+                user.getLastName()));
             // entry.setUpdated(visit.getDate().toDate());
             Content summary = new Content();
-            summary.setValue(vet.getSpecialties().toString());
+            summary.setValue(user.getAddress() + ", " + user.getCity());
             entry.setSummary(summary);
             entries.add(entry);
         }

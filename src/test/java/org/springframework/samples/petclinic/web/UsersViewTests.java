@@ -45,8 +45,8 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration("VisitsViewTests-config.xml")
-@ActiveProfiles("jdbc")
-public class VisitsViewTests {
+@ActiveProfiles("jpa")
+public class UsersViewTests {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -57,16 +57,7 @@ public class VisitsViewTests {
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
-    
-    @Test
-    public void getVisitsXml() throws Exception {
-        ResultActions actions = this.mockMvc.perform(get("/vets.xml").accept(MediaType.APPLICATION_XML));
-        actions.andDo(print()); // action is logged into the console
-        actions.andExpect(status().isOk());
-        actions.andExpect(content().contentType("application/xml"));
-        actions.andExpect(xpath("/vets/vetList[id=1]/firstName").string(containsString("James")));
 
-    }
     @Test
     public void getUsersXml() throws Exception {
         ResultActions actions = this.mockMvc.perform(get("/usersFeed.xml").accept(MediaType.APPLICATION_XML));
@@ -84,5 +75,14 @@ public class VisitsViewTests {
         actions.andExpect(content().contentType("application/json"));
         actions.andExpect(content().json("{'users':{'userList':[{'id':1,'firstName':'Rajagopal','lastName':'Muthuchidambaram','address':'B4, Phase B, Sri Harshita apartments','city':'Chennai','telephone':'9791800572','new':false},{'id':2,'firstName':'Creepy','lastName':'Crawly','address':'Some newyork address','city':'Newyork','telephone':'9654462165','new':false}]}}"));
 
+    }
+    
+    @Test
+    public void getUsersAtom() throws Exception {
+        ResultActions actions = this.mockMvc.perform(get("/usersFeed.atom").accept(MediaType.APPLICATION_ATOM_XML));
+        actions.andDo(print()); // action is logged into the console
+        actions.andExpect(status().isOk());
+//        actions.andExpect(content().contentType("application/atom+xml"));
+//        actions.andExpect(content().json("{'users':{'userList':[{'id':1,'firstName':'Rajagopal','lastName':'Muthuchidambaram','address':'B4, Phase B, Sri Harshita apartments','city':'Chennai','telephone':'9791800572','new':false},{'id':2,'firstName':'Creepy','lastName':'Crawly','address':'Some newyork address','city':'Newyork','telephone':'9654462165','new':false}]}}"));
     }
 }
