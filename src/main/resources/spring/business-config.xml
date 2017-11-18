@@ -47,8 +47,8 @@
 									- spring-data-jpa	
 		  =============================================================================-->
 	
-    <beans profile="jpa,spring-data-jpa">
-        <!-- JPA EntityManagerFactory -->
+    <beans profile="jpa">
+    	<!-- JPA EntityManagerFactory -->
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource">
             <property name="jpaVendorAdapter">
@@ -75,11 +75,11 @@
             exceptions such as JPA PersistenceExceptions to Spring's DataAccessException hierarchy).
         -->
         <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+        <context:component-scan base-package="org.springframework.samples.petclinic.repository.jpa"/>
+	 </beans>
 
-    </beans>
-
-    <beans profile="jdbc">
-        <!-- Transaction manager for a single JDBC DataSource (alternative to JTA) -->
+  <!--   <beans profile="jdbc">
+        Transaction manager for a single JDBC DataSource (alternative to JTA)
         <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
               p:dataSource-ref="dataSource"/>
 
@@ -96,16 +96,16 @@
     </beans>
 
     <beans profile="jpa">
-        <!--
+        
             Loads JPA beans
             Will automatically be transactional due to @Transactional.
             EntityManager will be auto-injected due to @PersistenceContext.
             PersistenceExceptions will be auto-translated due to @Repository.
-        -->
+       
         <context:component-scan base-package="org.springframework.samples.petclinic.repository.jpa"/>
     </beans>
 
     <beans profile="spring-data-jpa">
         <jpa:repositories base-package="org.springframework.samples.petclinic.repository.springdatajpa"/>
-    </beans>
+    </beans> -->
 </beans>

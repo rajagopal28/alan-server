@@ -17,7 +17,8 @@ package org.springframework.samples.petclinic.web;
 
 
 import java.text.ParseException;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +38,13 @@ import org.springframework.samples.petclinic.service.ClinicService;
  * @author Juergen Hoeller
  * @author Michael Isvy
  */
-public class PetTypeFormatter implements Formatter<PetType> {
+public class UserTypeFormatter implements Formatter<PetType> {
 
     private final ClinicService clinicService;
 
 
     @Autowired
-    public PetTypeFormatter(ClinicService clinicService) {
+    public UserTypeFormatter(ClinicService clinicService) {
         this.clinicService = clinicService;
     }
 
@@ -54,7 +55,7 @@ public class PetTypeFormatter implements Formatter<PetType> {
 
     @Override
     public PetType parse(String text, Locale locale) throws ParseException {
-        Collection<PetType> findPetTypes = this.clinicService.findPetTypes();
+        List<PetType> findPetTypes =  new ArrayList<PetType>();//this.clinicService.findPetTypes();
         for (PetType type : findPetTypes) {
             if (type.getName().equals(text)) {
                 return type;

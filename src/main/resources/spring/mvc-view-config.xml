@@ -58,22 +58,21 @@
             <map>
                 <entry key="html" value="text/html" />
                 <entry key="xml" value="application/xml" />
-                <entry key="atom" value="application/atom+xml" />
                 <entry key="json" value="application/json" />
             </map>
         </property>
     </bean>
 
     <!-- Renders an Atom feed of the visits. Used by the BeanNameViewResolver  -->
-    <bean id="vets/vetList.atom" class="org.springframework.samples.petclinic.web.VetsAtomView"/>
+    <bean id="users/userList.atom" class="org.springframework.samples.petclinic.web.UsersAtomView"/>
 
     <!-- Renders JSON view -->
     <bean id="users/userList.json" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
     </bean>
     <!-- Renders an XML view. Used by the BeanNameViewResolver  -->
-     <bean id="vets/vetList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
+    <!--  <bean id="vets/vetList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
         <property name="marshaller" ref="marshaller"/>
-    </bean>
+    </bean> -->
 
     <!-- Renders an XML view. Used by the BeanNameViewResolver
     org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
@@ -81,10 +80,10 @@
     <bean id="users/userList.xml" class="org.springframework.web.servlet.view.xml.MarshallingView">
         <property name="marshaller" ref="umarshaller"/>
     </bean>
-    <oxm:jaxb2-marshaller id="marshaller">
-        <!-- Object-XML mapping declared using annotations inside 'Vets' -->
+   <!--  <oxm:jaxb2-marshaller id="marshaller">
+        Object-XML mapping declared using annotations inside 'Vets'
         <oxm:class-to-be-bound name="org.springframework.samples.petclinic.model.Vets"/>
-    </oxm:jaxb2-marshaller>
+    </oxm:jaxb2-marshaller> -->
      <oxm:jaxb2-marshaller id="umarshaller">
         <!-- Object-XML mapping declared using annotations inside 'Vets' -->
         <oxm:class-to-be-bound name="org.springframework.samples.petclinic.model.Users"/>
