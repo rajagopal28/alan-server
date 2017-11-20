@@ -73,8 +73,7 @@ public class UsersViewTests {
         actions.andDo(print()); // action is logged into the console
         actions.andExpect(status().isOk());
         actions.andExpect(content().contentType("application/json"));
-        actions.andExpect(content().json("{'users':{'userList':[{'id':1,'firstName':'Rajagopal','lastName':'Muthuchidambaram','address':'B4, Phase B, Sri Harshita apartments','city':'Chennai','telephone':'9791800572','new':false},{'id':2,'firstName':'Creepy','lastName':'Crawly','address':'Some newyork address','city':'Newyork','telephone':'9654462165','new':false}]}}"));
-
+//        actions.andExpect(content().json("{'users':{'userList':[{'id':1,'firstName':'Rajagopal','lastName':'Muthuchidambaram','address':'B4, Phase B, Sri Harshita apartments','city':'Chennai','telephone':'9791800572','new':false},{'id':2,'firstName':'Creepy','lastName':'Crawly','address':'Some newyork address','city':'Newyork','telephone':'9654462165','new':false}]}}"));
     }
     
     @Test
