@@ -22,6 +22,11 @@ PetClinic :: a Spring Framework demonstration
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Alan- Your Trip planning assistant</title>
+    
+	<spring:url value="/resources/css/font-awesome-4.7.0.min.css" var="fontAwesomeCss"/>
+	<link rel="stylesheet" href="${fontAwesomeCss}">
+	<spring:url value="/resources/css/bulma.0.6.0.min.css" var="blumaCss"/>
+	<link rel="stylesheet" href="${blumaCss}">
 
 
     <spring:url value="/webjars/bootstrap/2.3.0/css/bootstrap.min.css" var="bootstrapCss"/>
