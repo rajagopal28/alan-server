@@ -30,7 +30,7 @@
     <jsp:include page="../fragments/bodyHeader.jsp"/>
     <h2>Users</h2>
     
-    <datatables:table id="users" data="${selections}" cdn="true" row="user" theme="bootstrap2" 
+    <datatables:table id="users" data="${selections}" cdn="true" row="user"
                       cssClass="table table-striped" paginate="false" info="false" export="pdf">
         <datatables:column title="Name" cssStyle="width: 150px;" display="html">
             <spring:url value="/users/{userId}.html" var="userUrl">
