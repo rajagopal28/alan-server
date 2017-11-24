@@ -21,6 +21,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
+import org.springframework.samples.petclinic.model.Trip;
 import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
@@ -56,5 +57,13 @@ public interface ClinicService {
 	public Collection<User> findUserByLastName(String lastName);
 
 	public Collection<User> findUsers();
+
+	public Trip findTripById(int tripId);
+
+	public Collection<Trip> findTrips();
+
+	public void saveTrip(Trip trip);
+
+	public Collection<Trip> findTripByTitle(String title);
 
 }

@@ -23,11 +23,13 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
+import org.springframework.samples.petclinic.model.Trip;
 import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
+import org.springframework.samples.petclinic.repository.TripRepository;
 import org.springframework.samples.petclinic.repository.UserRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
@@ -48,14 +50,18 @@ public class ClinicServiceImpl implements ClinicService {
     private OwnerRepository ownerRepository;
     private VisitRepository visitRepository;
 	private UserRepository userRepository;
+	private TripRepository tripRepository;
 
     @Autowired
-    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, UserRepository userRepository) {
+    public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, 
+    		OwnerRepository ownerRepository, VisitRepository visitRepository, 
+    		UserRepository userRepository, TripRepository tripRepository) {
         this.petRepository = petRepository;
         this.vetRepository = vetRepository;
         this.ownerRepository = ownerRepository;
         this.visitRepository = visitRepository;
         this.userRepository = userRepository;
+        this.tripRepository = tripRepository;
     }
 
     @Override
@@ -132,6 +138,30 @@ public class ClinicServiceImpl implements ClinicService {
     public Collection<User> findUsers() throws DataAccessException {
         return userRepository.findAll();
     }
+
+	@Override
+    @Transactional(readOnly = true)
+	public Trip findTripById(int tripId) {
+		return tripRepository.findById(tripId);
+	}
+
+	@Override
+    @Transactional(readOnly = true)
+	public Collection<Trip> findTrips() {
+		return tripRepository.findAll();
+	}
+
+	@Override
+    @Transactional()
+	public void saveTrip(Trip trip) {
+		tripRepository.save(trip);		
+	}
+
+	@Override
+    @Transactional(readOnly = true)
+	public Collection<Trip> findTripByTitle(String title) {
+		return tripRepository.findByTitle(title);
+	}
     
 
 
